@@ -1,6 +1,7 @@
 const appliances = []; // Array to store appliance objects
 let totalEnergy = 0;
 let totalCost = 0;
+let firstEntry = true;
 
 function addAppliance() {
 const applianceName = document.getElementById('appliance').value;
@@ -32,7 +33,11 @@ appliances.push(appliance);
 // Update the UI
 updateTotals();
 updateApplianceList();
-initializeChart();
+if (firstEntry===true) {
+    initializeChart();
+    firstEntry = false;
+}
+
 updateChart(appliances);
 
 // Clear form

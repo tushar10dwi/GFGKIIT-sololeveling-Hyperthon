@@ -40,8 +40,7 @@ if (firstEntry===true) {
 }
 
 updateChart(appliances);
-initializeModel();
-trainModel();
+
 console.table(appliances);
 
 // Clear form

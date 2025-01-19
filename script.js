@@ -1,4 +1,5 @@
 const appliances = []; // Array to store appliance objects
+let trainingData = [];
 let totalEnergy = 0;
 let totalCost = 0;
 let firstEntry = true;
@@ -39,6 +40,9 @@ if (firstEntry===true) {
 }
 
 updateChart(appliances);
+initializeModel();
+trainModel();
+console.table(appliances);
 
 // Clear form
 document.getElementById('energy-form').reset();

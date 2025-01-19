@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energy Consumption Form</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <h1>Electricity Consumption Monitor</h1>
@@ -33,7 +35,7 @@
 
     <div id="appliance-data">
         <h2>Appliance List</h2>
-        <table border="1">
+        <table border="1" id="user-data">
             <thead>
                 <tr>
                     <th>#</th>
@@ -49,5 +51,11 @@
             </tbody>
         </table>
     </div>
+
+    <div id="chart-container" style="margin-top: 20px;">
+        <h2>Energy Consumption Chart</h2>
+        <canvas id="energyChart" width="400" height="200"></canvas>
+    </div>
+    
 </body>
 </html>

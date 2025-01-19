@@ -32,6 +32,8 @@ appliances.push(appliance);
 // Update the UI
 updateTotals();
 updateApplianceList();
+initializeChart();
+updateChart(appliances);
 
 // Clear form
 document.getElementById('energy-form').reset();
@@ -60,4 +62,46 @@ row.innerHTML = `
 
 listContainer.appendChild(row);
 });
+}
+
+let energyChart;
+
+function initializeChart() {
+    const ctx = document.getElementById('energyChart').getContext('2d');
+    energyChart = new Chart(ctx, {
+        type: 'bar', // Chart type (bar, line, pie, etc.)
+        data: {
+            labels: [], // Labels for the x-axis (e.g., appliance names)
+            datasets: [
+                {
+                    label: 'Energy Consumption (kWh)',
+                    data: [], // Data for the y-axis (e.g., energy values)
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+}
+
+function updateChart(appliances) {
+    // Update chart labels and data
+    energyChart.data.labels = appliances.map((appliance) => appliance.name);
+    energyChart.data.datasets[0].data = appliances.map((appliance) => appliance.energy);
+    console.log(energyChart.data.labels); // Should display an array of labels
+    console.log(energyChart.data.datasets[0].data); // Should display an array of numbers
+
+
+
+    // Refresh the chart to display updated data
+    energyChart.update();
 }
